@@ -1,7 +1,6 @@
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
 import { Hero } from './components/sections/Hero'
-import { SocialProof } from './components/sections/SocialProof'
 import { Problems } from './components/sections/Problems'
 import { Solution } from './components/sections/Solution'
 import { Cases } from './components/sections/Cases'
@@ -16,7 +15,6 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <SocialProof />
         <Problems />
         <Solution />
         <Cases />

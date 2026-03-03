@@ -23,7 +23,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[rgba(108,99,255,0.3)] bg-[rgba(108,99,255,0.08)] text-[#6C63FF] text-sm font-medium mb-8"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#6C63FF] animate-pulse" />
-            150+ компаний уже автоматизируют бизнес с BAI
+            ИИ-автоматизация бизнес-процессов
             <ArrowRight size={14} />
           </motion.div>
 
@@ -33,11 +33,11 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.05 }}
             className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-[#F0F4FF] mb-6"
           >
-            Сократите расходы на
+            Автоматизируем бизнес-процессы
             <br />
-            <span className="gradient-text">40–80% с ИИ-автоматизацией</span>
+            <span className="gradient-text">с помощью ИИ,</span>
             <br />
-            бизнес-процессов
+            чтобы вы росли быстрее
           </motion.h1>
 
           <motion.p
@@ -46,15 +46,15 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-[#8B9ABB] text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10"
           >
-            Внедряем ИИ-агентов, которые обрабатывают заказы, отбирают кандидатов
-            и анализируют риски без участия людей. Первый процесс запускается за 48 часов.
+            Проектируем и внедряем ИИ-решения, которые берут на себя рутину:
+            обработку заказов, скрининг кандидатов, аналитику и многое другое.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button
               variant="primary"
@@ -63,7 +63,7 @@ export function Hero() {
               href="#cta"
               onClick={(e) => { e.preventDefault(); document.querySelector('#cta')?.scrollIntoView({ behavior: 'smooth' }) }}
             >
-              Получить бесплатный аудит
+              Обсудить задачу
               <ArrowRight size={18} />
             </Button>
             <Button
@@ -74,32 +74,8 @@ export function Hero() {
               onClick={(e) => { e.preventDefault(); document.querySelector('#cases')?.scrollIntoView({ behavior: 'smooth' }) }}
             >
               <Play size={16} />
-              Смотреть кейсы
+              Примеры сценариев
             </Button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[rgba(108,99,255,0.1)] rounded-2xl overflow-hidden border border-[rgba(108,99,255,0.15)]"
-          >
-            {[
-              { value: '150+', label: 'Клиентов' },
-              { value: '3M+', label: 'Часов автоматизировано' },
-              { value: '340%', label: 'Средний ROI' },
-              { value: '48ч', label: 'Среднее время запуска' },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="bg-[#080B14] px-6 py-5 text-center"
-              >
-                <div className="font-display font-bold text-2xl md:text-3xl gradient-text mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-[#8B9ABB] text-sm">{stat.label}</div>
-              </div>
-            ))}
           </motion.div>
         </div>
       </div>

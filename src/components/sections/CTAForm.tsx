@@ -59,22 +59,22 @@ export function CTAForm() {
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(108,99,255,0.3)] bg-[rgba(108,99,255,0.08)] text-[#6C63FF] text-sm font-medium mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#6C63FF] animate-pulse" />
-                Бесплатный аудит
+                Бесплатная консультация
               </div>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-[#F0F4FF] leading-tight mb-4">
-                Готовы автоматизировать
-                <span className="gradient-text"> бизнес за 48 часов?</span>
+                Давайте обсудим
+                <span className="gradient-text"> вашу задачу</span>
               </h2>
               <p className="text-[#8B9ABB] leading-relaxed mb-8">
-                Оставьте заявку — наш эксперт свяжется с вами в течение 2 часов
-                и проведёт бесплатный аудит ваших процессов.
+                Оставьте заявку — мы свяжемся с вами, обсудим процессы
+                и предложим варианты автоматизации.
               </p>
 
               <div className="space-y-3">
                 {[
-                  'Бесплатный анализ 2-х процессов',
-                  'Расчёт потенциального ROI',
-                  'Дорожная карта внедрения',
+                  'Бесплатная консультация по задаче',
+                  'Оценка потенциала автоматизации',
+                  'Предложение по пилотному внедрению',
                   'Без обязательств и предоплат',
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-3">
@@ -106,9 +106,9 @@ export function CTAForm() {
                     <p className="text-[#F0F4FF] text-sm font-semibold">Что будет дальше:</p>
                     <div className="space-y-3">
                       {[
-                        { step: '1', text: 'Знакомство — 15-минутный звонок для понимания ваших задач' },
-                        { step: '2', text: 'Бесплатный аудит 2-х процессов с расчётом потенциала' },
-                        { step: '3', text: 'Расчёт ROI и дорожная карта внедрения' },
+                        { step: '1', text: 'Знакомство — короткий звонок для понимания ваших задач' },
+                        { step: '2', text: 'Анализ процессов и оценка потенциала автоматизации' },
+                        { step: '3', text: 'Предложение с вариантами и стоимостью пилота' },
                       ].map((item) => (
                         <div key={item.step} className="flex items-start gap-3">
                           <div className="w-6 h-6 rounded-full gradient-bg flex items-center justify-center shrink-0 mt-0.5">
@@ -214,7 +214,7 @@ export function CTAForm() {
                     ) : (
                       <>
                         <Send size={18} />
-                        Получить бесплатный аудит
+                        Оставить заявку
                         <ArrowRight size={16} />
                       </>
                     )}

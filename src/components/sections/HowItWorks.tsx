@@ -12,8 +12,8 @@ export function HowItWorks() {
         <SectionHeader
           badge="Как это работает"
           title="От аудита до результата"
-          highlight="за 48 часов"
-          description="Прозрачный процесс внедрения без технических рисков и неожиданных затрат."
+          highlight="внедрения"
+          description="Понятные этапы, предсказуемые сроки."
           inView={inView}
         />
 

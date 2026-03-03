@@ -13,7 +13,7 @@ const CAPABILITIES = [
   {
     icon: Workflow,
     title: 'Ноль узких мест',
-    description: 'Автоматическая оркестрация задач: система выдерживает x10 нагрузку без привлечения новых сотрудников.',
+    description: 'Автоматическая оркестрация задач: система справляется с растущей нагрузкой без привлечения новых сотрудников.',
   },
   {
     icon: LineChart,
@@ -23,17 +23,17 @@ const CAPABILITIES = [
   {
     icon: Shield,
     title: 'Ваши данные — только ваши',
-    description: 'Шифрование AES-256, соответствие 152-ФЗ, возможность on-premise развёртывания на вашем сервере.',
+    description: 'Проектируем решения с учётом требований 152-ФЗ, данные не передаются третьим сторонам. Возможно развёртывание на вашем сервере.',
   },
 ]
 
 const BENEFITS = [
-  'Снижение расходов на 40–80% уже в первый квартал',
-  'Запуск первого ИИ-процесса за 48 часов, а не месяцы',
+  'Снижение расходов на рутинные операции',
+  'Пилотное внедрение на одном процессе для оценки результата',
   'Интеграция с любым CRM/ERP без замены ваших систем',
-  'Обучение на ваших данных — точность решений от 95%',
-  'Масштабирование в 5 раз без единого нового найма',
-  'Окупаемость в первый месяц — средний ROI 340%',
+  'Обучение на ваших данных для повышения точности',
+  'Масштабирование без расширения штата',
+  'Прозрачная отчётность и контроль на каждом этапе',
 ]
 
 export function Solution() {
@@ -123,7 +123,7 @@ export function Solution() {
                   <div className="w-3 h-3 rounded-full bg-red-500" />
                   <div className="w-3 h-3 rounded-full bg-yellow-500" />
                   <div className="w-3 h-3 rounded-full bg-green-500" />
-                  <span className="text-[#8B9ABB] text-xs ml-2 font-mono">bai-dashboard.app</span>
+                  <span className="text-[#8B9ABB] text-xs ml-2 font-mono">demo: bai-dashboard</span>
                 </div>
 
                 <div className="space-y-4 mb-6">
@@ -132,14 +132,14 @@ export function Solution() {
                       <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                       <span className="text-[#F0F4FF] text-sm">Обработка заказов</span>
                     </div>
-                    <span className="text-green-400 text-sm font-mono">2 847/сут</span>
+                    <span className="text-green-400 text-sm font-mono">авто</span>
                   </div>
                   <div className="flex items-center justify-between p-3 rounded-xl bg-[#0F1420] border border-[rgba(108,99,255,0.1)]">
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 rounded-full bg-[#6C63FF] animate-pulse" />
                       <span className="text-[#F0F4FF] text-sm">Скрининг резюме</span>
                     </div>
-                    <span className="text-[#6C63FF] text-sm font-mono">451 кандидат</span>
+                    <span className="text-[#6C63FF] text-sm font-mono">авто</span>
                   </div>
                   <div className="flex items-center justify-between p-3 rounded-xl bg-[#0F1420] border border-[rgba(108,99,255,0.1)]">
                     <div className="flex items-center gap-3">
@@ -152,14 +152,14 @@ export function Solution() {
 
                 <div className="p-4 rounded-xl bg-gradient-to-r from-[rgba(108,99,255,0.1)] to-[rgba(0,212,255,0.05)] border border-[rgba(108,99,255,0.2)]">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[#8B9ABB] text-xs">Экономия за этот месяц</span>
-                    <span className="text-green-400 text-xs font-semibold">+23%</span>
+                    <span className="text-[#8B9ABB] text-xs">Статус процессов</span>
+                    <span className="text-green-400 text-xs font-semibold">Все активны</span>
                   </div>
-                  <div className="font-display font-bold text-2xl gradient-text">₽ 1 240 000</div>
+                  <div className="font-display font-bold text-2xl gradient-text">3 из 3 автоматизированы</div>
                 </div>
 
                 <div className="mt-6 space-y-3">
-                  <p className="text-[#8B9ABB] text-xs font-medium uppercase tracking-wider">Преимущества включены</p>
+                  <p className="text-[#8B9ABB] text-xs font-medium uppercase tracking-wider">Преимущества</p>
                   {BENEFITS.map((b) => (
                     <div key={b} className="flex items-start gap-2">
                       <CheckCircle2 size={15} className="text-[#6C63FF] shrink-0 mt-0.5" />
