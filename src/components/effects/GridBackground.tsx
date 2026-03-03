@@ -9,6 +9,9 @@ export function GridBackground() {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
+    const isMobile = window.matchMedia('(max-width: 768px)').matches
+    if (isMobile) return
+
     let animationId: number
     let offset = 0
 

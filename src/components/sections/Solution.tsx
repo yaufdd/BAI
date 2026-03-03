@@ -1,59 +1,94 @@
 import { motion } from 'framer-motion'
-import { CheckCircle2, BrainCircuit, Workflow, LineChart, Shield } from 'lucide-react'
+import { CheckCircle2, BrainCircuit, Workflow, LineChart, Shield, ArrowRight } from 'lucide-react'
 import { useInView } from '../../hooks/useInView'
-import { SectionHeader } from '../ui/SectionHeader'
+import { Button } from '../ui/Button'
 import { GlowOrb } from '../effects/GlowOrb'
 
 const CAPABILITIES = [
   {
     icon: BrainCircuit,
-    title: 'ИИ-агенты 24/7',
-    description: 'Интеллектуальные агенты берут на себя рутинные задачи, не требуя перерывов и выходных.',
+    title: 'ИИ-агенты работают 24/7',
+    description: 'Обрабатывают заказы, отбирают резюме, отвечают клиентам — без больничных, отпусков и выходных.',
   },
   {
     icon: Workflow,
-    title: 'Умная оркестрация',
-    description: 'Автоматически распределяем задачи между модулями, исключая узкие места в процессах.',
+    title: 'Ноль узких мест',
+    description: 'Автоматическая оркестрация задач: система выдерживает x10 нагрузку без привлечения новых сотрудников.',
   },
   {
     icon: LineChart,
-    title: 'Real-time аналитика',
-    description: 'Дашборды с живыми данными — принимайте решения на основе фактов, а не интуиции.',
+    title: 'Решения за минуты, а не дни',
+    description: 'Дашборды с данными по выручке, конверсии и рискам обновляются в реальном времени для мгновенных решений.',
   },
   {
     icon: Shield,
-    title: 'Enterprise-безопасность',
-    description: 'Шифрование AES-256, соответствие 152-ФЗ, полный аудит всех действий системы.',
+    title: 'Ваши данные — только ваши',
+    description: 'Шифрование AES-256, соответствие 152-ФЗ, возможность on-premise развёртывания на вашем сервере.',
   },
 ]
 
 const BENEFITS = [
-  'Снижение операционных расходов на 40–80%',
-  'Запуск первого ИИ-процесса за 48 часов',
-  'Интеграция с любым CRM/ERP без замены систем',
-  'Обучение на ваших данных — точность от 95%',
-  'Масштабирование без роста штата',
-  'ROI уже в первый месяц',
+  'Снижение расходов на 40–80% уже в первый квартал',
+  'Запуск первого ИИ-процесса за 48 часов, а не месяцы',
+  'Интеграция с любым CRM/ERP без замены ваших систем',
+  'Обучение на ваших данных — точность решений от 95%',
+  'Масштабирование в 5 раз без единого нового найма',
+  'Окупаемость в первый месяц — средний ROI 340%',
 ]
 
 export function Solution() {
   const { ref, inView } = useInView()
 
   return (
-    <section id="solution" className="relative py-24 bg-[#0F1420] overflow-hidden">
+    <section id="solution" aria-label="Наше решение" className="relative py-24 bg-[#0F1420] overflow-hidden">
       <GlowOrb color="primary" size="xl" className="-right-48 top-0 opacity-5" />
       <GlowOrb color="secondary" size="lg" className="-left-32 bottom-0 opacity-5" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
-        <SectionHeader
-          badge="Наше решение"
-          title="ИИ, который работает"
-          highlight="на ваш бизнес"
-          description="Мы не просто внедряем инструменты — мы создаём интеллектуальную экосистему, которая трансформирует ваши процессы изнутри."
-          inView={inView}
-        />
+        <div className="mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(108,99,255,0.3)] bg-[rgba(108,99,255,0.08)] text-[#6C63FF] text-sm font-medium mb-6"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#6C63FF] animate-pulse" />
+            Наше решение
+          </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#F0F4FF] leading-tight mb-6 text-left"
+          >
+            ИИ, который работает <span className="gradient-text">на ваш бизнес</span>
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+          >
+            <p className="text-[#8B9ABB] text-lg leading-relaxed max-w-2xl">
+              Не просто инструменты — интеллектуальная экосистема, которая трансформирует ваши процессы и приносит измеримый результат.
+            </p>
+            <Button
+              variant="outline"
+              size="md"
+              as="a"
+              href="#how-it-works"
+              onClick={(e) => { e.preventDefault(); document.querySelector('#how-it-works')?.scrollIntoView({ behavior: 'smooth' }) }}
+              className="shrink-0"
+            >
+              Посмотреть, как это работает
+              <ArrowRight size={16} />
+            </Button>
+          </motion.div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
               {CAPABILITIES.map((cap, i) => (
@@ -68,7 +103,7 @@ export function Solution() {
                     <cap.icon size={20} className="text-[#6C63FF]" />
                   </div>
                   <h3 className="font-semibold text-[#F0F4FF] text-sm mb-1">{cap.title}</h3>
-                  <p className="text-[#6B7A99] text-xs leading-relaxed">{cap.description}</p>
+                  <p className="text-[#8B9ABB] text-sm leading-relaxed">{cap.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -78,9 +113,9 @@ export function Solution() {
             initial={{ opacity: 0, x: 30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="relative"
+            className="relative animate-float"
           >
-            <div className="relative p-8 rounded-3xl bg-[#080B14] border border-[rgba(108,99,255,0.2)] overflow-hidden">
+            <div className="relative p-8 rounded-3xl bg-[#080B14] border border-[rgba(108,99,255,0.2)] overflow-hidden glow-primary">
               <div className="absolute inset-0 bg-gradient-to-br from-[rgba(108,99,255,0.05)] to-[rgba(0,212,255,0.03)]" />
 
               <div className="relative">
@@ -88,7 +123,7 @@ export function Solution() {
                   <div className="w-3 h-3 rounded-full bg-red-500" />
                   <div className="w-3 h-3 rounded-full bg-yellow-500" />
                   <div className="w-3 h-3 rounded-full bg-green-500" />
-                  <span className="text-[#6B7A99] text-xs ml-2 font-mono">bai-dashboard.app</span>
+                  <span className="text-[#8B9ABB] text-xs ml-2 font-mono">bai-dashboard.app</span>
                 </div>
 
                 <div className="space-y-4 mb-6">
@@ -117,14 +152,14 @@ export function Solution() {
 
                 <div className="p-4 rounded-xl bg-gradient-to-r from-[rgba(108,99,255,0.1)] to-[rgba(0,212,255,0.05)] border border-[rgba(108,99,255,0.2)]">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[#6B7A99] text-xs">Экономия за этот месяц</span>
+                    <span className="text-[#8B9ABB] text-xs">Экономия за этот месяц</span>
                     <span className="text-green-400 text-xs font-semibold">+23%</span>
                   </div>
                   <div className="font-display font-bold text-2xl gradient-text">₽ 1 240 000</div>
                 </div>
 
                 <div className="mt-6 space-y-3">
-                  <p className="text-[#6B7A99] text-xs font-medium uppercase tracking-wider">Преимущества включены</p>
+                  <p className="text-[#8B9ABB] text-xs font-medium uppercase tracking-wider">Преимущества включены</p>
                   {BENEFITS.map((b) => (
                     <div key={b} className="flex items-start gap-2">
                       <CheckCircle2 size={15} className="text-[#6C63FF] shrink-0 mt-0.5" />

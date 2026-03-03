@@ -26,7 +26,7 @@ export function Button({
     outline:
       'border border-[rgba(108,99,255,0.4)] text-[#F0F4FF] hover:border-[#6C63FF] hover:bg-[rgba(108,99,255,0.08)]',
     ghost:
-      'text-[#6B7A99] hover:text-[#F0F4FF] hover:bg-[rgba(108,99,255,0.08)]',
+      'text-[#8B9ABB] hover:text-[#F0F4FF] hover:bg-[rgba(108,99,255,0.08)]',
   }
 
   const sizes = {

@@ -31,8 +31,18 @@ export function CTAForm() {
     }
   }
 
+  const validateAtLeastOneContact = (fieldName: 'email' | 'phone') => {
+    return (value: string | undefined, formValues: LeadFormData) => {
+      const otherField = fieldName === 'email' ? formValues.phone : formValues.email
+      if (!value && !otherField) {
+        return 'Укажите email или телефон'
+      }
+      return true
+    }
+  }
+
   return (
-    <section id="cta" className="relative py-24 bg-[#080B14] overflow-hidden">
+    <section id="cta" aria-label="Форма заявки" className="relative py-24 bg-[#080B14] overflow-hidden">
       <GlowOrb color="primary" size="xl" className="-left-48 top-0 opacity-10" />
       <GlowOrb color="secondary" size="lg" className="-right-32 bottom-0 opacity-10" />
 
@@ -55,7 +65,7 @@ export function CTAForm() {
                 Готовы автоматизировать
                 <span className="gradient-text"> бизнес за 48 часов?</span>
               </h2>
-              <p className="text-[#6B7A99] leading-relaxed mb-8">
+              <p className="text-[#8B9ABB] leading-relaxed mb-8">
                 Оставьте заявку — наш эксперт свяжется с вами в течение 2 часов
                 и проведёт бесплатный аудит ваших процессов.
               </p>
@@ -80,7 +90,7 @@ export function CTAForm() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-12"
+                  className="text-center py-8"
                 >
                   <div className="w-16 h-16 rounded-full gradient-bg flex items-center justify-center mx-auto mb-4 glow-primary">
                     <CheckCircle2 size={28} className="text-white" />
@@ -88,12 +98,31 @@ export function CTAForm() {
                   <h3 className="font-display font-bold text-[#F0F4FF] text-xl mb-2">
                     Заявка получена!
                   </h3>
-                  <p className="text-[#6B7A99] text-sm">
-                    Наш эксперт свяжется с вами в течение 2 часов.
+                  <p className="text-[#8B9ABB] text-sm mb-6">
+                    Наш эксперт свяжется с вами в рабочее время (пн-пт, 9:00–19:00 МСК).
                   </p>
+
+                  <div className="text-left space-y-4 mb-6 p-4 rounded-xl bg-[#080B14] border border-[rgba(108,99,255,0.12)]">
+                    <p className="text-[#F0F4FF] text-sm font-semibold">Что будет дальше:</p>
+                    <div className="space-y-3">
+                      {[
+                        { step: '1', text: 'Знакомство — 15-минутный звонок для понимания ваших задач' },
+                        { step: '2', text: 'Бесплатный аудит 2-х процессов с расчётом потенциала' },
+                        { step: '3', text: 'Расчёт ROI и дорожная карта внедрения' },
+                      ].map((item) => (
+                        <div key={item.step} className="flex items-start gap-3">
+                          <div className="w-6 h-6 rounded-full gradient-bg flex items-center justify-center shrink-0 mt-0.5">
+                            <span className="text-white text-xs font-bold">{item.step}</span>
+                          </div>
+                          <span className="text-[#8B9ABB] text-sm">{item.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
                   <button
                     onClick={() => setState('idle')}
-                    className="mt-6 text-[#6C63FF] text-sm hover:underline cursor-pointer"
+                    className="text-[#6C63FF] text-sm hover:underline cursor-pointer"
                   >
                     Отправить ещё одну заявку
                   </button>
@@ -104,7 +133,7 @@ export function CTAForm() {
                     <input
                       {...register('name', { required: 'Введите ваше имя' })}
                       placeholder="Ваше имя *"
-                      className={`w-full px-4 py-3 rounded-xl bg-[#080B14] border text-[#F0F4FF] placeholder-[#6B7A99] text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[rgba(108,99,255,0.3)] ${
+                      className={`w-full px-4 py-3 rounded-xl bg-[#080B14] border text-[#F0F4FF] placeholder-[#8B9ABB] text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[rgba(108,99,255,0.3)] ${
                         errors.name ? 'border-red-500/50' : 'border-[rgba(108,99,255,0.2)] focus:border-[#6C63FF]'
                       }`}
                     />
@@ -116,12 +145,12 @@ export function CTAForm() {
                   <div>
                     <input
                       {...register('email', {
-                        required: 'Введите email',
                         pattern: { value: /^\S+@\S+\.\S+$/, message: 'Некорректный email' },
+                        validate: validateAtLeastOneContact('email'),
                       })}
                       type="email"
-                      placeholder="Email *"
-                      className={`w-full px-4 py-3 rounded-xl bg-[#080B14] border text-[#F0F4FF] placeholder-[#6B7A99] text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[rgba(108,99,255,0.3)] ${
+                      placeholder="Email"
+                      className={`w-full px-4 py-3 rounded-xl bg-[#080B14] border text-[#F0F4FF] placeholder-[#8B9ABB] text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[rgba(108,99,255,0.3)] ${
                         errors.email ? 'border-red-500/50' : 'border-[rgba(108,99,255,0.2)] focus:border-[#6C63FF]'
                       }`}
                     />
@@ -133,12 +162,12 @@ export function CTAForm() {
                   <div>
                     <input
                       {...register('phone', {
-                        required: 'Введите телефон',
                         pattern: { value: /^[\d\s+\-()]{7,}$/, message: 'Некорректный номер' },
+                        validate: validateAtLeastOneContact('phone'),
                       })}
                       type="tel"
-                      placeholder="Телефон *"
-                      className={`w-full px-4 py-3 rounded-xl bg-[#080B14] border text-[#F0F4FF] placeholder-[#6B7A99] text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[rgba(108,99,255,0.3)] ${
+                      placeholder="Телефон, например +7 (999) 123-45-67"
+                      className={`w-full px-4 py-3 rounded-xl bg-[#080B14] border text-[#F0F4FF] placeholder-[#8B9ABB] text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[rgba(108,99,255,0.3)] ${
                         errors.phone ? 'border-red-500/50' : 'border-[rgba(108,99,255,0.2)] focus:border-[#6C63FF]'
                       }`}
                     />
@@ -151,7 +180,7 @@ export function CTAForm() {
                     <input
                       {...register('company')}
                       placeholder="Компания (необязательно)"
-                      className="w-full px-4 py-3 rounded-xl bg-[#080B14] border border-[rgba(108,99,255,0.2)] focus:border-[#6C63FF] text-[#F0F4FF] placeholder-[#6B7A99] text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[rgba(108,99,255,0.3)]"
+                      className="w-full px-4 py-3 rounded-xl bg-[#080B14] border border-[rgba(108,99,255,0.2)] focus:border-[#6C63FF] text-[#F0F4FF] placeholder-[#8B9ABB] text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[rgba(108,99,255,0.3)]"
                     />
                   </div>
 
@@ -160,7 +189,7 @@ export function CTAForm() {
                       {...register('message')}
                       placeholder="Расскажите о вашей задаче (необязательно)"
                       rows={3}
-                      className="w-full px-4 py-3 rounded-xl bg-[#080B14] border border-[rgba(108,99,255,0.2)] focus:border-[#6C63FF] text-[#F0F4FF] placeholder-[#6B7A99] text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[rgba(108,99,255,0.3)] resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-[#080B14] border border-[rgba(108,99,255,0.2)] focus:border-[#6C63FF] text-[#F0F4FF] placeholder-[#8B9ABB] text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[rgba(108,99,255,0.3)] resize-none"
                     />
                   </div>
 
@@ -191,7 +220,7 @@ export function CTAForm() {
                     )}
                   </Button>
 
-                  <p className="text-[#6B7A99] text-xs text-center">
+                  <p className="text-[#8B9ABB] text-xs text-center">
                     Нажимая кнопку, вы соглашаетесь с{' '}
                     <a href="#" className="text-[#6C63FF] hover:underline">
                       политикой конфиденциальности

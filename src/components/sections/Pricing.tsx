@@ -9,7 +9,7 @@ export function Pricing() {
   const { ref, inView } = useInView()
 
   return (
-    <section id="pricing" className="relative py-24 bg-[#080B14]">
+    <section id="pricing" aria-label="Тарифы" className="relative py-24 bg-[#080B14]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         <SectionHeader
           badge="Тарифы"
@@ -43,7 +43,7 @@ export function Pricing() {
 
               <div className="mb-6">
                 <h3 className="font-display font-bold text-[#F0F4FF] text-xl mb-2">{plan.name}</h3>
-                <p className="text-[#6B7A99] text-sm">{plan.description}</p>
+                <p className="text-[#8B9ABB] text-sm">{plan.description}</p>
               </div>
 
               <div className="mb-8">
@@ -54,7 +54,7 @@ export function Pricing() {
                     <>
                       <span className="font-display font-bold text-4xl gradient-text">₽ {plan.price}</span>
                       {plan.period && (
-                        <span className="text-[#6B7A99] text-sm">/{plan.period}</span>
+                        <span className="text-[#8B9ABB] text-sm">/{plan.period}</span>
                       )}
                     </>
                   )}
@@ -85,6 +85,16 @@ export function Pricing() {
             </motion.div>
           ))}
         </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="text-center text-[#8B9ABB] text-sm mt-10 max-w-2xl mx-auto leading-relaxed"
+        >
+          Все тарифы включают бесплатный аудит процессов и расчёт ROI до старта.
+          Мы не берём предоплату, пока вы не увидите план внедрения.
+        </motion.p>
       </div>
     </section>
   )

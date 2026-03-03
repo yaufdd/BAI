@@ -15,7 +15,17 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
-  const handleNav = (href: string) => {
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
+
+  const handleNav = (e: React.MouseEvent, href: string) => {
+    e.preventDefault()
     setMobileOpen(false)
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: 'smooth' })
@@ -50,28 +60,20 @@ export function Navbar() {
               </span>
             </a>
 
-            <nav className="hidden md:flex items-center gap-8">
+            <nav aria-label="Основная навигация" className="hidden md:flex items-center gap-8">
               {NAV_LINKS.map((link) => (
-                <button
+                <a
                   key={link.href}
-                  onClick={() => handleNav(link.href)}
-                  className="text-[#6B7A99] hover:text-[#F0F4FF] text-sm font-medium transition-colors duration-200 cursor-pointer"
+                  href={link.href}
+                  onClick={(e) => handleNav(e, link.href)}
+                  className="text-[#8B9ABB] hover:text-[#F0F4FF] text-sm font-medium transition-colors duration-200"
                 >
                   {link.label}
-                </button>
+                </a>
               ))}
             </nav>
 
-            <div className="hidden md:flex items-center gap-3">
-              <Button
-                variant="outline"
-                size="sm"
-                as="a"
-                href="#cta"
-                onClick={(e) => { e.preventDefault(); document.querySelector('#cta')?.scrollIntoView({ behavior: 'smooth' }) }}
-              >
-                Войти
-              </Button>
+            <div className="hidden md:flex items-center">
               <Button
                 variant="primary"
                 size="sm"
@@ -84,9 +86,9 @@ export function Navbar() {
             </div>
 
             <button
-              className="md:hidden text-[#6B7A99] hover:text-white transition-colors"
+              className="md:hidden text-[#8B9ABB] hover:text-white transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle menu"
+              aria-label={mobileOpen ? 'Закрыть меню' : 'Открыть меню'}
             >
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -103,21 +105,24 @@ export function Navbar() {
             transition={{ duration: 0.2 }}
             className="fixed top-16 left-0 right-0 z-40 bg-[rgba(8,11,20,0.97)] backdrop-blur-xl border-b border-[rgba(108,99,255,0.15)] px-4 py-6"
           >
-            <nav className="flex flex-col gap-4">
+            <nav aria-label="Мобильная навигация" className="flex flex-col gap-4">
               {NAV_LINKS.map((link) => (
-                <button
+                <a
                   key={link.href}
-                  onClick={() => handleNav(link.href)}
-                  className="text-left text-[#F0F4FF] text-base font-medium py-2 border-b border-[rgba(108,99,255,0.1)] last:border-0 cursor-pointer"
+                  href={link.href}
+                  onClick={(e) => handleNav(e, link.href)}
+                  className="text-left text-[#F0F4FF] text-base font-medium py-2 border-b border-[rgba(108,99,255,0.1)] last:border-0"
                 >
                   {link.label}
-                </button>
+                </a>
               ))}
               <Button
                 variant="primary"
                 size="md"
                 className="mt-2 w-full"
-                onClick={() => { setMobileOpen(false); document.querySelector('#cta')?.scrollIntoView({ behavior: 'smooth' }) }}
+                as="a"
+                href="#cta"
+                onClick={(e) => { e.preventDefault(); setMobileOpen(false); document.querySelector('#cta')?.scrollIntoView({ behavior: 'smooth' }) }}
               >
                 Получить консультацию
               </Button>

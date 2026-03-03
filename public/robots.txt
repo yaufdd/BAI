@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yaufdd.github.io/BAI/sitemap.xml

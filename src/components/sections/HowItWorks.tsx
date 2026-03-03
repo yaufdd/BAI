@@ -7,7 +7,7 @@ export function HowItWorks() {
   const { ref, inView } = useInView()
 
   return (
-    <section id="how-it-works" className="relative py-24 bg-[#080B14]">
+    <section id="how-it-works" aria-label="Как это работает" className="relative py-24 bg-[#080B14]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         <SectionHeader
           badge="Как это работает"
@@ -38,7 +38,7 @@ export function HowItWorks() {
                   )}
                 </div>
                 <h3 className="font-display font-semibold text-[#F0F4FF] text-lg mb-2">{step.title}</h3>
-                <p className="text-[#6B7A99] text-sm leading-relaxed">{step.description}</p>
+                <p className="text-[#8B9ABB] text-sm leading-relaxed">{step.description}</p>
               </motion.div>
             ))}
           </div>

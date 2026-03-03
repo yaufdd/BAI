@@ -6,7 +6,7 @@ import { GlowOrb } from '../effects/GlowOrb'
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#080B14]">
+    <section aria-label="Главный экран" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#080B14]">
       <GridBackground />
 
       <GlowOrb color="primary" size="xl" className="-top-48 -left-48" />
@@ -19,41 +19,41 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[rgba(108,99,255,0.3)] bg-[rgba(108,99,255,0.08)] text-[#6C63FF] text-sm font-medium mb-8"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#6C63FF] animate-pulse" />
-            ИИ-автоматизация нового поколения
+            150+ компаний уже автоматизируют бизнес с BAI
             <ArrowRight size={14} />
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.05 }}
             className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-[#F0F4FF] mb-6"
           >
-            Превратите рутину
+            Сократите расходы на
             <br />
-            <span className="gradient-text">в конкурентное</span>
+            <span className="gradient-text">40–80% с ИИ-автоматизацией</span>
             <br />
-            преимущество
+            бизнес-процессов
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-[#6B7A99] text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-[#8B9ABB] text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10"
           >
-            Автоматизируем бизнес-процессы с помощью ИИ — от скрининга кандидатов
-            до обработки тысяч заказов. Первые результаты уже через 48 часов.
+            Внедряем ИИ-агентов, которые обрабатывают заказы, отбирают кандидатов
+            и анализируют риски без участия людей. Первый процесс запускается за 48 часов.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
           >
             <Button
@@ -81,7 +81,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
             className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[rgba(108,99,255,0.1)] rounded-2xl overflow-hidden border border-[rgba(108,99,255,0.15)]"
           >
             {[
@@ -97,7 +97,7 @@ export function Hero() {
                 <div className="font-display font-bold text-2xl md:text-3xl gradient-text mb-1">
                   {stat.value}
                 </div>
-                <div className="text-[#6B7A99] text-xs md:text-sm">{stat.label}</div>
+                <div className="text-[#8B9ABB] text-sm">{stat.label}</div>
               </div>
             ))}
           </motion.div>

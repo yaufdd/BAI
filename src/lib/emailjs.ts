@@ -8,8 +8,8 @@ export const EMAILJS_CONFIG = {
 
 export interface LeadFormData {
   name: string
-  email: string
-  phone: string
+  email?: string
+  phone?: string
   company?: string
   message?: string
 }
@@ -20,8 +20,8 @@ export async function sendLeadEmail(data: LeadFormData): Promise<void> {
     EMAILJS_CONFIG.templateId,
     {
       from_name: data.name,
-      from_email: data.email,
-      phone: data.phone,
+      from_email: data.email ?? '',
+      phone: data.phone ?? '',
       company: data.company ?? '',
       message: data.message ?? '',
     },

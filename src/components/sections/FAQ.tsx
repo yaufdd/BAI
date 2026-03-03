@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Plus, Minus } from 'lucide-react'
+import { Plus, Minus, ArrowRight } from 'lucide-react'
 import { useInView } from '../../hooks/useInView'
 import { SectionHeader } from '../ui/SectionHeader'
+import { Button } from '../ui/Button'
 import { FAQ_ITEMS } from '../../lib/constants'
 
 export function FAQ() {
@@ -10,7 +11,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section id="faq" className="relative py-24 bg-[#0F1420]">
+    <section id="faq" aria-label="Часто задаваемые вопросы" className="relative py-24 bg-[#0F1420]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         <SectionHeader
           badge="FAQ"
@@ -56,7 +57,7 @@ export function FAQ() {
                     transition={{ duration: 0.25, ease: 'easeInOut' }}
                   >
                     <div className="px-6 pb-5">
-                      <p className="text-[#6B7A99] text-sm leading-relaxed">{item.answer}</p>
+                      <p className="text-[#8B9ABB] text-sm leading-relaxed">{item.answer}</p>
                     </div>
                   </motion.div>
                 )}
@@ -64,6 +65,24 @@ export function FAQ() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="text-center mt-10"
+        >
+          <Button
+            variant="outline"
+            size="lg"
+            as="a"
+            href="#cta"
+            onClick={(e) => { e.preventDefault(); document.querySelector('#cta')?.scrollIntoView({ behavior: 'smooth' }) }}
+          >
+            Остались вопросы? Получите консультацию
+            <ArrowRight size={18} />
+          </Button>
+        </motion.div>
       </div>
     </section>
   )
