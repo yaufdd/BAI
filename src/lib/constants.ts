@@ -2,8 +2,8 @@ export const COMPANY_NAME = 'BAI'
 export const COMPANY_FULL_NAME = 'Business AI'
 export const COMPANY_TAGLINE = 'Оптимизация бизнеса с помощью искусственного интеллекта'
 export const COMPANY_EMAIL = 'hello@bai.ai'
-export const COMPANY_PHONE = '+7 (800) 555-35-35'
-export const COMPANY_TG = 'https://t.me/bai_official'
+export const COMPANY_PHONE = '+7 (916) 962-14-00'
+export const COMPANY_TG = 'https://t.me/yaufdd'
 
 export const NAV_LINKS = [
   { label: 'Решение', href: '#solution' },

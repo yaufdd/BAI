@@ -90,16 +90,8 @@ export function Footer() {
         </div>
 
         <div className="border-t border-[rgba(108,99,255,0.1)] pt-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
-            <p className="text-[#8B9ABB] text-xs">
-              © {year} {COMPANY_NAME}. Все права защищены.
-            </p>
-            <p className="text-[#8B9ABB] text-xs">
-              Сделано с ИИ ❤️ в России
-            </p>
-          </div>
-          <p className="text-[#8B9ABB] text-xs text-center sm:text-left">
-            ООО «БАИ Технолоджис» · ИНН 0000000000 · ОГРН 0000000000000
+          <p className="text-[#8B9ABB] text-xs">
+            © {year} {COMPANY_NAME}. Все права защищены.
           </p>
         </div>
       </div>
